@@ -101,7 +101,8 @@ def fire(signal):
     annual_yield = amount / WAD * fresh["apr"] / 100
     return {
         "tx": receipt.transactionHash.hex(),
-        "profit": annual_yield,
+        # A deposit creates a yield-bearing position but no immediately realized P&L.
+        "profit": 0.0,
         "value_per_year": annual_yield,
         "supplied_tUSDC": amount / WAD,
         "shares_received": received / WAD,
